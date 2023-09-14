@@ -1,0 +1,10 @@
+---
+import LaunchesWithProps from '../components/LaunchesWithProps.astro'
+import { getLaunchesByYear } from '../lib/spacex'
+const year = '2021'
+console.log({ year })
+const response = await getLaunchesByYear({ year })
+const launches = response?.docs
+---
+<LaunchesWithProps launches={launches} />
+```

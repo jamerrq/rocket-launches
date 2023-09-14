@@ -1,0 +1,34 @@
+---
+const minYear = 2010, maxYear = 2022
+const { year = '2010' } = Astro.params
+import Layout from '../../layouts/Layout.astro'
+import LaunchesWithProps from '../../components/LaunchesWithProps.astro'
+import { getLaunchesByYear } from '../../lib/spacex'
+const response = await getLaunchesByYear({ year })
+const launches = response?.docs
+---
+<Layout title={`Launches in ${year}`}>
+  <div class="flex flex-col gap-2 justify-center items-center mb-4 -mt-16">
+    <label for="year" class="block text-sm font-medium text-gray-900 dark:text-white">Select a year</label>
+    <select name="year" id="year"
+            onchange="location.href = `/launches-by-year/${this.value}`"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/3 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+      {
+        Array.from({ length: maxYear - minYear + 1 }, (_, i) => minYear + i).map((y) => (
+          <option value={y} selected={y === parseInt(year)}>{y}</option>
+        ))
+      }
+    </select>
+  </div>
+
+  {
+    launches?.length
+      ? <LaunchesWithProps launches={launches} />
+      : (
+        <h1 class="w-full mx-auto text-center dark:text-white">
+          No data found for this year ...
+        </h1>
+      )
+  }
+
+</Layout>

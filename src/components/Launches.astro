@@ -1,0 +1,35 @@
+---
+import { getLatestLaunches } from '../lib/spacex'
+import CardLaunch from './CardLaunch.astro'
+
+const response = await getLatestLaunches()
+const launches = response?.docs
+---
+
+<div class="grid gap-8 grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 place-content-center self-center mx-auto mb-5 max-w-[90vw]">
+  {
+    launches?.map((launch) => (
+      <CardLaunch
+        id={launch.id}
+        name={launch.name}
+        img={launch.links.patch.small}
+        details={launch.details}
+        flightNumber={launch.flight_number}
+        success={launch.success}
+      />
+    ))
+  }
+</div>
+{
+  launches === null && (
+    <div class="grid place-content-center gap-2">
+      <h1 class="text-red-200 font-semibold underline">Oops, you got no internet mate 💀</h1>
+      <a class="flex rounded bg-blue-400 py-2 items-center justify-center hover:scale-110 transition hover:bg-blue-600 text-blue-50 hover:font-semibold" href="/">
+        {'>'} Try again my bro 🤝💯
+      </a>
+      <a class="flex rounded bg-blue-400 py-2 items-center justify-center hover:scale-110 transition hover:bg-blue-600 text-blue-50 hover:font-semibold">
+        {'>'} No way 😫 going to bed 😴
+      </a>
+    </div>
+  )
+}
