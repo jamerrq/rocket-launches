@@ -10,7 +10,7 @@ module.exports = {
   overrides: [
     {
       // Define the configuration for `.astro` file.
-      files: ['/**/*.astro'],
+      files: ['*.astro'],
       // Allows Astro components to be parsed.
       parser: 'astro-eslint-parser',
       // Parse the script in `.astro` as TypeScript by adding the following configuration.
@@ -32,6 +32,7 @@ module.exports = {
   },
   rules: {
     // '@typescript-eslint/triple-slash-reference': 'off'
+    'no-template-curly-in-string': 'off'
   },
   ignorePatterns: ['node_modules', '.cache', 'public', '*.d.ts']
 }

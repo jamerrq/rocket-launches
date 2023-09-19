@@ -2,10 +2,11 @@
 import NavButton from './NavButton.astro'
 import AboutIcon from './icons/AboutIcon.astro'
 import HourGlass from './icons/HourGlass.astro'
-import RocketIcon from './icons/RocketIcon.astro';
+import RocketIcon from './icons/RocketIcon.astro'
+import BrandGithub from './icons/BrandGithub.astro'
 ---
 
-<header class="py-8 px-4 min-w-screen lg:py-16 lg:px-6 grid place-content-center">
+<header class="py-4 px-4 min-w-screen grid place-content-center">
 
     <div class="mb-4 tracking-tight font-extrabold text-white flex flex-col items-center">
         <h2 class="mb-3 text-5xl">
@@ -18,16 +19,20 @@ import RocketIcon from './icons/RocketIcon.astro';
 
     <nav class="flex flex-row items-center justify-between w-full text-center md:flex-row max-w-xl">
         <NavButton href="/">
-            Last Launches
+            Latest
             <RocketIcon slot="before" />
         </NavButton>
         <NavButton href="/about">
-            About the project
+            About
             <AboutIcon slot="before" />
         </NavButton>
         <NavButton href="/launches-by-year/2010">
-            Older Launches
+            Oldest
             <HourGlass slot="before" />
+        </NavButton>
+        <NavButton href="https://github.com/jamerrq/rocket-launches" target="_blank">
+            Source
+            <BrandGithub slot="before" />
         </NavButton>
     </nav>
 

@@ -1,12 +1,10 @@
 ---
-import { getLatestLaunches, getLaunchBy } from '../../lib/spacex'
+import { getLaunchBy } from '../../lib/spacex.ts'
 import Layout from '../../layouts/Layout.astro'
-import { type Doc } from '../../types/apiTypes'
 const { id } = Astro.params
 const launch = await getLaunchBy({ id: id ?? '' })
-
-
 ---
+
 <Layout title={`Launch #${launch?.flight_number} ${launch?.name}`}>
   <article class="grid grid-cols-1 mx-auto w-96 place-content-center gap-2 place-items-center px-2 mb-2">
     <img src={launch?.links?.patch?.small} alt="" class="w-32"
@@ -25,11 +23,11 @@ const launch = await getLaunchBy({ id: id ?? '' })
         'my-2 text-xs font-bold tracking-tight p-1 rounded',
         {
           'bg-green-200 text-green-900': launch?.success,
-          'bg-red-200 text-red-900': !(launch?.success ?? false)
+          'bg-red-200 text-red-900': !(launch?.success !== null && launch?.success === true)
         }
       ]}
     >
-      {launch?.success !== null ? 'Success ✅' : 'Failure ❌'}
+      {(launch?.success !== null && launch?.success === true) ? 'Success ✅' : 'Failure ❌'}
     </span>
     <p class="text-white text-base">{launch?.details}</p>
   </article>

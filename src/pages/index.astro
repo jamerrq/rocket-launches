@@ -1,10 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import Launches from '../components/Launches.astro';
+// import Launches from '../components/Launches.astro';
+import LaunchesWithProps from '../components/LaunchesWithProps.astro'
+import { getLatestLaunches } from '../lib/spacex'
+const response = await getLatestLaunches()
+const launches = response?.docs !== undefined ? response.docs : []
 ---
 
 <Layout title="SpaceX Launches">
-    <Launches />
+    <LaunchesWithProps launches={launches} />
 </Layout>
 
 <style>

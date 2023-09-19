@@ -1,14 +1,15 @@
 ---
-const minYear = 2010, maxYear = 2022
-const { year = '2010' } = Astro.params
 import Layout from '../../layouts/Layout.astro'
 import LaunchesWithProps from '../../components/LaunchesWithProps.astro'
 import { getLaunchesByYear } from '../../lib/spacex'
+const minYear = 2010
+const maxYear = 2022
+const { year = '2010' } = Astro.params
 const response = await getLaunchesByYear({ year })
 const launches = response?.docs
 ---
 <Layout title={`Launches in ${year}`}>
-  <div class="flex flex-col gap-2 justify-center items-center mb-4 -mt-16">
+  <div class="flex flex-col gap-2 justify-center items-center mb-4">
     <label for="year" class="block text-sm font-medium text-gray-900 dark:text-white">Select a year</label>
     <select name="year" id="year"
             onchange="location.href = `/launches-by-year/${this.value}`"
@@ -22,13 +23,12 @@ const launches = response?.docs
   </div>
 
   {
-    launches?.length
+    launches !== undefined && launches.length > 0
       ? <LaunchesWithProps launches={launches} />
       : (
         <h1 class="w-full mx-auto text-center dark:text-white">
           No data found for this year ...
-        </h1>
-      )
+        </h1>)
   }
 
 </Layout>

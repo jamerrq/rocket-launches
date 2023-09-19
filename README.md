@@ -22,6 +22,16 @@ API](https://api.spacexdata.com/v5/launches) to display upcoming and past
 launches. It is built with [Astro](https://astro.build) and [Tailwind
 CSS](https://tailwindcss.com/).
 
+## Tools
+
+![Astro](https://img.shields.io/badge/-Astro-000000?style=flat&logo=astro&logoColor=FFFFFF)
+![Tailwind
+CSS](https://img.shields.io/badge/-Tailwind%20CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=FFFFFF)
+![pnpm](https://img.shields.io/badge/-pnpm-F69220?style=flat&logo=pnpm&logoColor=FFFFFF)
+![ESLint](https://img.shields.io/badge/-ESLint-4B32C3?style=flat&logo=eslint&logoColor=FFFFFF)
+![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat&logo=typescript&logoColor=FFFFFF)
+![Deno](https://img.shields.io/badge/-Deno-000000?style=flat&logo=deno&logoColor=FFFFFF)
+
 ## 🧞 Commands
 
 All commands are run from the root of the project, from a terminal:
