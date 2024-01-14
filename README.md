@@ -1,5 +1,10 @@
 # Rocket Launches App 🚀
 
+> [!NOTE]
+> This app is highly inspired in the Astro Course by @midudev
+> The code is 100% mine, but the idea is not.
+> Check out the course [here](https://www.youtube.com/watch?v=RB5tR_nqUEw&t=4541s)
+
 ## 🚀 Getting Started
 
 1. Clone this repo
